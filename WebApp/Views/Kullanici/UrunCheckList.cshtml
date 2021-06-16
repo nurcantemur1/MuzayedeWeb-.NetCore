@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "UrunListesi";
+}
+@model List<UrunListModel>
+
+<section id="portfolio" class="portfolio">
+    <div class="container">
+      
+        <div class="section-title">
+            <span>Ürün Listesi</span>
+            <h2>Ürün Listesi</h2>
+        </div>
+
+            <div class="row">
+                <div class="col">
+
+                    <p>
+                        <a href="@Url.Action("UrunEkle", "Kullanici",new {muzayedeId = ViewBag.muzayedeId})" type="submit" class="btn btn-primary">Yeni Ürün</a>
+
+                    </p>
+                    @using (Html.BeginForm("UrunCheckList", "Kullanici",new {muzayedeId = ViewBag.muzayedeId}, FormMethod.Post))
+                    {
+
+                        <table class="table">
+                            <tr>
+                                <th>Resim</th>
+                                <th>Urun Adı</th>
+                                <th>UrunAciklamasi</th>
+                                <th>UrunFiyat</th>
+                                <th>İşlem</th>
+                            </tr>
+
+                            @for (var i = 0; i < Model.Count; i++)
+                            {
+                                <tr>
+                                    @Html.HiddenFor(modelItem => Model[i].urun.UrunID)
+                                    <td>
+                                        <div class="pic" style="width: 100px; height: 100px">
+                                            <a>
+                                                <img src="@Model[i].Base64" class="img-fluid" alt="Red dot">
+                                            </a>
+
+                                        </div>
+                                    </td>
+                                    <td>
+
+                                        @Html.DisplayFor(modelItem => Model[i].urun.UrunAdi)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => Model[i].urun.UrunAciklamasi)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => Model[i].urun.UrunFiyat)
+                                    </td>
+                                    <td>
+                                        @Html.CheckBoxFor(modelItem => Model[i].check)
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+                        <input type="submit" class="btn btn-primary" value="Müzayedene Ekle" />
+                    }
+
+                </div>
+            </div>
+       
+    </div>
+</section>

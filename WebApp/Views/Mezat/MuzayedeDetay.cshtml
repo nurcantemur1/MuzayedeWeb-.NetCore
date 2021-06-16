@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "MuzayedeDetay";
+}
+
+@model Data.Dtos.MuzayedeDetayDto
+
+<div id="portfolio" class="portfolio">
+    <div class="container">
+
+        <div class="section-title">
+            <span>@Model.muzayede.MuzayedeAdi Müzayedesi</span>
+            <h2>@Model.muzayede.MuzayedeAdi Müzayedesi</h2>
+        </div>
+    </div>
+</div><!-- End Portfolio Section -->
+<div id="team" class="team">
+    <div class="container">
+
+        <div class="row">
+
+        @if (Model.murunler != null && Model.murunler.Count > 0)
+        {
+            @foreach (var mUrunleri in Model.murunler)
+            {
+                <div class="col-lg-6 mt-4">
+                    <div class="member d-flex align-items-start">
+                        <div class="pic">
+                            <a>
+                                <img src="@mUrunleri.Base64" class="img-fluid" alt="Red dot">
+                            </a>
+                        </div>
+                        <div class="member-info">
+                            <h4>Urun Adı :@mUrunleri.UrunAdi</h4>
+                            <span>Urun Açıklaması :@mUrunleri.UrunAciklamasi</span>
+                            <span>Urun Fiyatı :@mUrunleri.UrunFiyat</span>
+                            <span>Satış Durumu @mUrunleri.UrunDurum</span>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        </div>
+    </div>
+    </div>
+<!-- End Team Section -->

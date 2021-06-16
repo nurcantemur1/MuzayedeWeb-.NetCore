@@ -1,0 +1,122 @@
+﻿
+@{
+    ViewBag.Title = "KartBilgilerim";
+}
+@using Data.Entities
+@model List<Data.Entities.KartBilgileri>
+
+<section>
+    <div class="row">
+        <div class="col-lg-pull-2">
+            <div>
+                <ul class="list-group">
+                    <li class="list-group-item "><a href="/Kullanici/KullaniciBilgileri"><h6>Bilgilerim</h6></a></li>
+                    <li class="list-group-item active" style="background-color: white"><a href="/Kullanici/KartBilgilerim"><h6>Kart Bilgileri</h6></a></li>
+                    <li class="list-group-item"><a href="/Kullanici/Muzayedelerim"><h6>Muzayedelerim</h6></a></li>
+                    <li class="list-group-item "><a href="/Kullanici/Urunlerim"><h6>Ürünlerim</h6></a></li>
+                    <li class="list-group-item"><a href="/Kullanici/PeyVerilenler"><h6>Pey verdiklerim</h6></a></li>
+                    <li class="list-group-item "><a href="/Kullanici/Siparislerim"><h6>Siparişlerim</h6></a></li>
+                    <li class="list-group-item "><a href="/Home/LogOut"><h6>Çıkış Yap</h6></a></li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-10">
+            <div class="container-fluid px-0" id="bg-div">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9 col-12">
+                        <div class="card card0">
+                            <div class="d-flex" id="wrapper">
+                                <!-- Sidebar -->
+                                <div class="bg-light border-right" id="sidebar-wrapper">
+
+                                    <div class="list-group list-group-flush">
+                                        <a data-toggle="tab" href="#menu1" id="tab1" class="tabs list-group-item active1">
+                                            <div class="list-div my-2">
+                                                <div class="fa fa-credit-card"></div> Kart Bilgileri
+                                            </div>
+                                        </a>
+                                     
+                                    </div>
+                                </div> <!-- Page Content -->
+                                <div id="page-content-wrapper">
+                                    @*<div class="row pt-3" id="border-btm">
+                                            <div class="col-4">
+                                                <button class="btn btn-success mt-4 ml-3 mb-3" id="menu-toggle">
+                                                    <div class="bar4"></div>
+                                                    <div class="bar4"></div>
+                                                    <div class="bar4"></div>
+                                                </button>
+                                            </div>
+
+                                        </div>*@
+
+                                    <div class="tab-content">
+
+
+                                        
+
+                                        <div style="padding-left: 450px">
+                                        
+
+                                            <a href="@Url.Action("KartEkle", "Kullanici", new {kullaniciId = ViewBag.kullaniciId})" type="submit" class="btn btn-primary">Kart Ekle</a>
+                                        </div>
+
+                                        <div id="menu1" class="tab-pane in active">
+                                            <div class="row justify-content-center">
+                                                <div class="col-11">
+                                                    @foreach (var item in Model.OrderByDescending(x=>x.Varsayilan))
+                                                    {
+                                                        <div class="form-card">
+
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label>Kart Sahibi</label>
+                                                                        <div class="input-group"> <input type="text" id="cr_no" placeholder="@item.HesapNo" minlength="19" maxlength="19"> </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label>Kart Numarası</label>
+                                                                        <div class="input-group"> <input type="text" id="cr_no" placeholder="@item.KartNo" minlength="19" maxlength="19"> </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label>Bakiye</label>
+                                                                        <div class="input-group"> <input type="number" name="cvcpwd" placeholder="@item.Bakiye" class="placeicon" minlength="3" maxlength="3"> </div>
+                                                                    </div>
+                                                                </div>
+                                                                <p></p>
+                                                                <div class="row">
+                                                                    @if (item.Varsayilan)
+                                                                    {
+                                                                    <div class="col-12"> <button disabled type="submit" value="Varsayılan" class="btn btn-success " />Varsayılan </div>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                <div class="col-12">
+                                                                    <a href="@Url.Action("VarsayilanYap", "Kullanici", new {kartId = item.Id})" type="submit" class="btn btn-primary">Varsayılan yap</a>
+
+                                                                </div>
+                                                                    }
+                                                                </div>
+                                                                <br />
+                                                        </div>
+                                                    }
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

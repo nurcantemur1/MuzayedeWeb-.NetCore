@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "KartEkle";
+}
+@model Data.Entities.KartBilgileri
+<section>
+    @using (Html.BeginForm("KartEkle", "Kullanici", new { kullaniciId = ViewBag.kullaniciId }, FormMethod.Post, true, new { enctype = "multipart/form-data" }))
+    {
+        <div id="menu2" class="tab-pane">
+            <div class="row justify-content-center">
+                <div class="col-11">
+                    <div class="form-card">
+                        <h3 class="mt-0 mb-4 text-center">Kart Bilgisi Ekle</h3>
+                        <div class="row">
+                                <div class="col-12">
+                                    @Html.TextBoxFor(m => m.HesapNo, new { @class = "form-control", @type = "text", @placeholder = "Kart Sahibi", @Value = @ViewBag.kartsahibi })
+                                </div>
+                                <div class="col-12">
+                                    @Html.TextBoxFor(m => m.KartNo, new { @class = "form-control", @type = "text", @placeholder = "Kart Numarası", @Value = @ViewBag.kartno })
+                                </div>
+                                <div class="col-12">
+                                    @Html.HiddenFor(m => m.Varsayilan, new { @class = "form-control", @type = "hidden", @placeholder = "varsayılan", @Value = false })
+                                    @Html.HiddenFor(m => m.KullaniciId, new { @class = "form-control", @type = "hidden", @placeholder = "kullaniciId", @Value = @ViewBag.kullaniciId })
+                                    @Html.TextBoxFor(m => m.Bakiye, new { @class = "form-control", @type = "text", @placeholder = "Bakiye", @Value = @ViewBag.bakiye })
+                                </div>
+                            </div>
+                            <p></p>
+                            <div class="row">
+                                <div class="col-md-12"> <input type="submit" value="ekle" class="btn btn-primary placeicon"> </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</section>

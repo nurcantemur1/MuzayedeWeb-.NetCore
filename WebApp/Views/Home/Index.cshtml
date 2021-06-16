@@ -1,0 +1,132 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Data.Entities.Muzayede[]
+
+
+<div class="container-fluid  ">
+    <div class="row ">
+        <div class="col-md-6">
+            &nbsp;
+            <div class="card ">
+                <div class="card-body text-center">
+                    <img src="~/MyBiz/img/muzayede.png" width="80%" height="150px">
+
+                    <p></p>
+
+                    <!-- Start exclusive deal Area -->
+                    <section class="exclusive-deal-area">
+                        <div class="container-fluid">
+                            <div class="row justify-content-center align-items-center">
+                                <div class="row clock_sec clockdiv" id="clockdiv">
+                                    <div class="col-lg-12">
+                                        <h1> <span class="badge badge-secondary">@Model[0].MuzayedeAdi Müzayedesi</span></h1>
+                                    </div>
+                                    <div class="col-lg-12">
+
+                                        <p id="@Model[0].MuzayedeID"></p>
+                                        <script>
+                                                    var dist = -1;
+                                                    var x = setInterval(function() {
+
+                                                        // If the count down is over, write some text
+                                                        if (dist < 0) {
+                                                            document.getElementById("btn_@Model[0].MuzayedeID").value = "Canlı";
+                                                            document.getElementById("btn_@Model[0].MuzayedeID").className += " btn-success";
+                                                            document.getElementById("@Model[0].MuzayedeID").innerHTML = "Müzayede Başladı";
+                                                            if (dist < -50000) {
+                                                                clearInterval(x);
+                                                                document.getElementById("btn_@Model[0].MuzayedeID").value = "Sonucları Gör";
+                                                                document.getElementById("btn_@Model[0].MuzayedeID").className += " btn-primary";
+                                                            document.getElementById("@Model[0].MuzayedeID").innerHTML = "Müzayede Sona ermiştir.";
+                                                            }
+                                                        }
+                                                    },1000);
+                                        </script>
+                                    </div>
+                                </div>
+                                <input id="btn_@Model[0].MuzayedeID" class="btn-lg " type="submit" onClick="location.href = '@Url.Action("CanliMuzayede","Mezat",new { muzayedeId = Model[0].MuzayedeID })'" value='İncele'>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+                    <!-- End exclusive deal Area -->
+                </div>
+            </div>
+
+
+        </div>
+        @for (int i = 1; i < Model.Length; i++)
+        {
+            <div class="col-md-6">
+                &nbsp;
+                <div class="card ">
+                    <div class="card-body text-center">
+                        <img src="~/MyBiz/img/muzayede.png" width="80%" height="150px">
+
+                        <p></p>
+
+                        <!-- Start exclusive deal Area -->
+                        <section class="exclusive-deal-area">
+                            <div class="container-fluid">
+                                <div class="row justify-content-center align-items-center">
+                                    <div class="row clock_sec clockdiv" id="clockdiv">
+                                        <div class="col-lg-12">
+                                            <h1> <span class="badge badge-secondary">@Model[i].MuzayedeAdi Müzayedesi</span></h1>
+                                        </div>
+                                        <div class="col-lg-12">
+
+                                            <p id="@Model[i].MuzayedeID"></p>
+                                            <script>
+
+                                                var x = setInterval(function() {
+
+                                                        var distance = new Date("@Model[i].Date").getTime() - new Date().getTime();
+
+                                                        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                                                        console.log("@Model[i].Date" + " " + distance + " " + "@Model[i].MuzayedeID");
+                                                        // Output the result in an element with id="demo"
+                                                        document.getElementById("@Model[i].MuzayedeID").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+                                                        // If the count down is over, write some text
+                                                        if (distance < 0) {
+                                                            document.getElementById("btn_@Model[i].MuzayedeID").value = "Canlı";
+                                                            document.getElementById("btn_@Model[i].MuzayedeID").className += " btn-success";
+                                                            document.getElementById("@Model[i].MuzayedeID").innerHTML = "Müzayede Başladı";
+                                                            if (distance < -50000) {
+                                                                clearInterval(x);
+                                                                document.getElementById("btn_@Model[i].MuzayedeID").value = "Sonucları Gör";
+                                                                document.getElementById("btn_@Model[i].MuzayedeID").className += " btn-primary";
+                                                                document.getElementById("@Model[i].MuzayedeID").innerHTML = "Müzayede Sona ermiştir.";
+                                                            }
+                                                        }
+                                                    },
+                                                    1000);
+                                            </script>
+                                        </div>
+                                    </div>
+                                    <input id="btn_@Model[i].MuzayedeID" class="btn-lg btn-primary" type="submit" onClick="location.href = '@Url.Action("Kontrol", "Mezat", new {muzayedeId = Model[i].MuzayedeID})'" value='İncele'>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+                        <!-- End exclusive deal Area -->
+                    </div>
+                </div>
+
+
+            </div>
+
+        }
+    </div>
+
+</div>

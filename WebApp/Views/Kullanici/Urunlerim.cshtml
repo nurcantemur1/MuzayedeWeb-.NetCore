@@ -1,0 +1,81 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<UrunModel>
+    <section>
+        <div class="row">
+            <div class="col-lg-pull-2">
+                <div>
+
+                    <ul class="list-group">
+                        <li class="list-group-item "><a href="/Kullanici/KullaniciBilgileri"><h6>Bilgilerim</h6></a></li>
+                        <li class="list-group-item "><a href="/Kullanici/KartBilgilerim"><h6>Kart Bilgileri</h6></a></li>
+                        <li class="list-group-item"><a href="/Kullanici/Muzayedelerim"><h6>Muzayedelerim</h6></a></li>
+                        <li class="list-group-item active" style="background-color: white"><a href="/Kullanici/Urunlerim/Urunlerim"><h6>Ürünlerim</h6></a></li>
+                        <li class="list-group-item"><a href="/Kullanici/PeyVerilenler"><h6>Pey verdiklerim</h6></a></li>
+                        <li class="list-group-item "><a href="/Kullanici/Siparislerim"><h6>Siparişlerim</h6></a></li>
+                        <li class="list-group-item "><a href="/Home/LogOut"><h6>Çıkış Yap</h6></a></li>
+
+                    </ul>
+
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="container" >
+                    <table class="table">
+                        <tr>
+                            <th>Resim</th>
+                            <th>Urun Adı</th>
+                            <th>UrunAciklamasi</th>
+                            <th>UrunFiyat</th>
+                            <th>İşlem</th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="pic" style="width: 90px; height: 90px">
+                                        @if (item.resim.Count > 0)
+                                        {
+                                            <a>
+                                                <img src="@item.resim[0].Base64" class="img-fluid" alt="Red dot" style="height:80px">
+                                            </a>
+                                        }
+                                     
+
+                                    </div>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.urun.UrunAdi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.urun.UrunAciklamasi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.urun.UrunFiyat)
+                                </td>
+                                <td>
+                                    <a href="/Kullanici/UrunDetay/@item.urun.UrunID" id="detay " type="button" class="btn btn-primary">Urun Detay <i class="far fa-gem ml-1 text-white"></i></a>
+
+                                    &nbsp;
+                                    <a href="/Kullanici/UrunSil/@item.urun.UrunID" type="button" class="btn btn-primary">Sil <i class="far fa-gem ml-1 text-white"></i></a>
+
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                    <p style="padding-left:700px">
+                        
+                        <a href="@Url.Action("UrunEkle","Kullanici")" type="submit" class="btn btn-primary">Yeni Ürün</a>
+
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+    </section>

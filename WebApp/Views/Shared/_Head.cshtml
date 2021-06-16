@@ -1,0 +1,56 @@
+﻿
+
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+
+        <div class="logo mr-auto">
+            <h1 class="text-light"><a href="/Home/Login">Online <span>Müzayede</span></a></h1>
+
+        </div>
+
+        <nav class="nav-menu d-none d-lg-block text-dark">
+            <ul>
+                <li class="nav-link "><a href="/Home/index"><h8>Anasayfa</h8></a></li>
+                &nbsp;
+                <li class="nav-link "><a href="/Home/Galeri"><h8>Galeri</h8></a></li>
+                &nbsp;
+                <li class="nav-link "><a href="/Home/EkspertizFormu"><h8>Ekspertiz Formu</h8> </a></li>
+
+                &nbsp;
+                <li class="nav-link "><a href="/Home/Contact"><h8>İletişim</h8></a></li>
+                @if (ViewBag.kullanici != null)
+                {
+                    <li class="nav-link text-primary"><a href="/Home/Login">Giriş Yap </a></li>
+                }
+                else
+                {
+                    <li class="nav-link active">
+                        <div class="dropdown show">
+
+                            <a href="/Home/Login" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> &nbsp;Kullanıcı @*@Model.KullaniciAdi @Model.KullaniciSoyadi*@</a>
+
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="/Kullanici/KullaniciBilgileri"><h6>Kullanıcı Bilgilerim</h6></a>
+                                <a class="dropdown-item" href="/Kullanici/KartBilgilerim"><h6>Kart Bilgilerim</h6></a>
+                                <a class="dropdown-item" href="/Kullanici/Siparislerim"><h6>Siparişlerim</h6></a>
+                                <a class="dropdown-item" href="/Kullanici/PeyVerilenler"><h6>Pey Verdiklerim</h6></a>
+                                <a class="dropdown-item" href="/Kullanici/Muzayedelerim"><h6>Müzayedelerim</h6></a>
+                                <a class="dropdown-item" href="/Kullanici/Urunlerim"><h6>Urunlerim</h6></a>
+                                <a class="dropdown-item" href="/Home/LogOut"><h6>Çıkış Yap</h6></a>
+
+                            </div>
+                        </div>
+
+                    </li>
+                }
+
+            </ul>
+
+        </nav><!-- .nav-menu -->
+
+
+    </div>
+
+</header><!-- End Header -->

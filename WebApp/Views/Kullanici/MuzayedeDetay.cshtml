@@ -1,0 +1,49 @@
+﻿@model Data.Dtos.MuzayedeDetayDto
+
+<section id="portfolio" class="portfolio">
+    <div class="container">
+
+        <div class="section-title">
+            <span>Müzayede Ürünleri Listesi</span>
+            <h2>Müzayede Ürünleri Listesi</h2>
+        </div>
+    </div>
+</section><!-- End Portfolio Section -->
+<section id="team" class="team">
+    <div class="container">
+        
+        <a href="@Url.Action("UrunCheckList", "Kullanici",new {muzayedeId = ViewBag.muzayedeId})" type="submit" class="btn btn-primary">Ürün Ekle</a>
+        <div class="row">
+
+            @if (Model.murunler != null && Model.murunler.Count > 0)
+            {
+                foreach (var item in Model.murunler.ToList())
+                {
+                    <div class="col-lg-6 mt-4">
+                        <div class="member d-flex align-items-start">
+                            <div class="pic">
+
+                                <a>
+                                    <img src="@item.Base64" class="img-fluid" alt="Red dot">
+                                </a>
+                            </div>
+
+                            <div class="member-info">
+                                <h4>@item.UrunAdi</h4>
+                                <p>@item.UrunAciklamasi</p>
+                                <span>@item.UrunFiyat</span>
+                                <div class="social">
+                                    <a href="@Url.Action("MurunSil", "Kullanici", new {murunId = item.mUrunID})">Sil</a>
+                                    <a href=""><i class="ri-facebook-fill"></i></a>
+                                    <a href=""><i class="ri-instagram-fill"></i></a>
+                                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+        <a href="@Url.Action("MuzayedeKaydet", "Kullanici")" type="submit" class="btn btn-primary"> Kaydet</a>
+    </div>
+</section>

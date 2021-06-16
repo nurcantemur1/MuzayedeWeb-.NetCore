@@ -1,0 +1,78 @@
+﻿@model Data.Entities.Kullanici
+<!--================Login Box Area =================-->
+<section id="team" class="team">
+  
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mt-4">
+                <section id="counts" class="counts">
+                    <div class="container">
+
+                        <div class="text-center title">
+                            <h2 class="animate__animated animate__fadeInDown">Müzayede sitemizde yeni misiniz? </h2>
+                            <p class="animate__animated animate__fadeInUp">Şimdi üye ol ve aramıza katıl.</p>
+                            <a href="/Home/KayitOl" class="btn-get-started scrollto animate__animated animate__fadeInUp">Üye Ol</a>
+                        </div>
+                    </div>
+                </section><!-- End Counts Section -->
+            </div>
+
+            <div class="col-lg-6 mt-4">
+
+                <div class="login_form_inner member d-flex align-items-start">
+                    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                    {
+                        <center style="color: dodgerblue"><h3>Giriş Yap</h3></center>
+                        
+
+                        <form class="row login_form" action="/Login/Login" method="post" id="contactForm" novalidate="novalidate">
+                            <center>
+                                <div class="col-md-12 form-group ">
+
+                                    @Html.TextBoxFor(m => m.Kullanicimail, new {@class = "form-control", placeholder = "Email", @type = "email"})
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    @Html.TextBoxFor(m => m.Sifre, new {@class = "form-control", placeholder = "Şifre", @type = "password"})
+                                </div>
+
+                                <div class="col-md-12 form-group">
+                                    <div class="creat_account">
+                                        <input type="checkbox" id="f-option2" name="selector">
+                                        <label for="f-option2">Sifremi kaydet</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 form-group">
+                                    <button type="submit" class="btn btn-primary"> Giriş Yap</button>
+                                    
+
+                                </div>
+
+                                <div class="center">
+                                    <button class="btn  continue facebook-button ">
+                                        <i class="fa fa-facebook ml-2"></i>
+                                        <span class="ml-5 px-4">Continue with facebook</span>
+                                    </button>
+                                    <button class="btn  continue google-button ">
+                                        <i class="fa fa-google ml-2"></i> <span class="ml-5 px-4">Continue with Google</span>
+                                    </button>
+
+                                </div>
+                                <p>
+
+                                </p>
+                                <a href="#">Şifremi unuttum</a>
+
+                            </center>
+                        </form>
+
+                    }
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<!--================End Login Box Area =================-->

@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "UrunDetay";
+}
+
+@model UrunModel
+
+@if (Model != null)
+{
+
+    <div class="container mt-5 mb-5" style="padding-top:100px">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="images p-3">
+                                <div class="member d-flex align-items-start">
+                                    <div class="pic" style="width: 70%; height: 70%">
+
+                                        @foreach (var image in Model.resim)
+                                        {
+
+                                            <a>
+                                                <img src="@Model.resim[0].Base64" class="img-fluid" alt="Red dot">
+                                            </a>
+
+
+                                        }
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="product p-4">
+                                <form action="/Kullanici/UrunDetay" method="POST" role="form">
+                                    <div class="mt-4 mb-3 text-center" style="padding-top: 50px">
+                                        <span class="text-uppercase text-muted brand"></span>
+                                        <h5> Urun Adı :</h5>
+                                        <input value="@Model.urun.UrunAdi" type="text" name="UrunAdi" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm">
+                                        &nbsp;
+                                        <br />
+                                        <h5> Urun Fiyatı :</h5>
+                                        <input value="@Model.urun.UrunFiyat" type="text" name="UrunFiyat" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm">
+                                        &nbsp;
+                                        <br />
+                                        <h5> Urun Adedi :</h5>
+                                        <input value="@Model.urun.UrunAdet" type="text" name="UrunAdet" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm">
+                                        &nbsp;
+                                        <br />
+                                        <h5> Urun Açıklaması :</h5>
+                                        <input value="@Model.urun.UrunAciklamasi" type="text" name="UrunAciklamasi" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm">
+                                        &nbsp;
+                                        <input hidden value="@Model.urun.KullaniciID" type="number" name="KullaniciID" />
+                                        <input hidden value="@Model.urun.UrunDurum" type="checkbox" name="UrunDurum" />
+                                        <input hidden value="@Model.urun.KategoriID" type="number" name="KategoriID" />
+                                        <input hidden value="@Model.urun.UrunID" type="number" name="UrunID" />
+
+
+
+                                        <br />
+                                        <br />
+                                        <input value="Kaydet" id=" kaydet" type="submit" class="btn btn-primary" />
+                                    </div>
+                                </form>
+                                <div class="cart mt-4 align-items-center">
+
+                                    <i class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

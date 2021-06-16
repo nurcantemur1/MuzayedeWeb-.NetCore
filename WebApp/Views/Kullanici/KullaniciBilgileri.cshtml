@@ -1,0 +1,87 @@
+﻿@model Data.Entities.Kullanici
+<section>
+    <div class="row">
+        <div class="col-lg-pull-2">
+            <div>
+
+                <ul class="list-group">
+                    <li class="list-group-item active" style="background-color: white"><a href="/Kullanici/KullaniciBilgileri"><h6>Bilgilerim</h6></a></li>
+                    <li class="list-group-item "><a href="/Kullanici/KartBilgilerim"><h6>Kart Bilgileri</h6></a></li>
+                    <li class="list-group-item"><a href="/Kullanici/Muzayedelerim"><h6>Muzayedelerim</h6></a></li>
+                    <li class="list-group-item "><a href="/Kullanici/Urunlerim"><h6>Ürünlerim</h6></a></li>
+                    <li class="list-group-item"><a href="/Kullanici/PeyVerilenler"><h6>Pey verdiklerim</h6></a></li>
+                    <li class="list-group-item "><a href="/Kullanici/Siparislerim"><h6>Siparişlerim</h6></a></li>
+                    <li class="list-group-item "><a href="/Home/LogOut"><h6>Çıkış Yap</h6></a></li>
+
+                </ul>
+
+            </div>
+        </div>
+        <div class="col-lg-10">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="card" width="200px">
+                        <h5 class="text-center">Kullanıcı Bilgilerim</h5>
+
+                        @if (Model != null)
+                        {
+                            <form method="post" action="/Kullanici/Kaydet" role="form">
+                                <div class="card-body cart">
+                                    <div class="col-sm-12 empty-cart-cls text-center">
+                                        <span>Mailiniz</span>
+                                        <br />
+                                        <div class="relative pb-5">
+                                            <input value="@Model.Kullanicimail" type="text" name="Kullanicimail" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm">
+                                        </div>
+
+                                        <div class="grid md:grid-cols-2 md:gap-2">
+                                            <span>Adınız Soyadınız</span>
+                                            <br />
+
+                                            <input value="@Model.KullaniciAdi" type="text" name="KullaniciAdi" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm">
+                                            <input value="@Model.KullaniciSoyadi" type="text" name="KullaniciSoyadi" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm">
+
+                                        </div>
+                                        <br />
+                                        <span>Alışveriş Adresiniz</span>
+                                        <br />
+
+                                        <input type="text" name="country" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="Country*">
+
+
+                                        <input type="text" name="city" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="City*">
+                                        <br />
+                                        <br />
+                                        <div class="form-group" style="width: 100%">
+                                            <input type="text" role="textbox" value="@Model.KullaniciAdres" class="" style="width: 100%" rows="5" name="KullaniciAdres"
+                                                   onfocus="this.placeholder = ''" onblur="this.placeholder = 'Açık Adres'" required="" />
+                                        </div>
+                                        <br />
+
+
+                                        <span>Telefon Numaranız</span>
+                                        <br />
+                                        <input value="@Model.KullaniciTelefon" type="text" name="KullaniciTelefon" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm">
+                                        <br />
+
+                                        <span>Sifre</span>
+                                        <br />
+                                        <input value="@Model.Sifre" type="password" name="Sifre" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm">
+                                        <br />
+                                        <div class="flex justify-between items-center pt-2">
+                                            <br />
+                                            <input value="Kaydet" id=" kaydet" type="submit" class="btn btn-lg btn-primary" />
+                                        </div>
+                                        <br />
+                                    </div>
+                                </div>
+                            </form>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+     
+    </div>
+</section>

@@ -1,0 +1,110 @@
+﻿<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.css"> -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css"> 
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker-standalone.css"> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
+
+<section>
+    <div class="row">
+        <div class="col-lg-2">
+            <ul class="list-group">
+                <li class="list-group-item  "><a href="/Kullanici/KullaniciBilgileri"><h6>Bilgilerim</h6></a></li>
+                <li class="list-group-item "><a href="/Kullanici/KartBilgilerim"><h6>Kart Bilgileri</h6></a></li>
+                <li class="list-group-item active" style="background-color: white"><a href="/Kullanici/Muzayedelerim"><h6>Muzayedelerim</h6></a></li>
+                <li class="list-group-item "><a href="/Kullanici/Urunlerim"><h6>Ürünlerim</h6></a></li>
+                <li class="list-group-item"><a href="/Kullanici/PeyVerilenler"><h6>Pey verdiklerim</h6></a></li>
+                <li class="list-group-item"><a href="/Kullanici/Siparislerim"><h6>Siparişlerim</h6></a></li>
+                <li class="list-group-item"><a href="/Home/LogOut"><h6>Çıkış Yap</h6></a></li>
+            </ul>
+        </div>
+        <div class="col-lg-9">
+            <div id="team" class="team">
+                <div style="padding-left: 800px">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#centralModalDanger">
+                        Müzayede ekle
+                    </button>
+                    <div class="modal fade" id="centralModalDanger" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-notify modal-danger" role="document">
+                            <!--Content-->
+                            <div class="modal-content">
+                                <!--Header-->
+                                <div class="modal-header">
+                                    <p class="heading lead">Modal Danger</p>
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true" class="white-text">&times;</span>
+                                    </button>
+                                </div>
+
+                                <!--Body-->
+                                <div class="modal-body">
+                                    <div class="text-center">
+                                        <form action="/Kullanici/MuzayedeEkle">
+                                            <label style="padding-left: 175px">Müzayede adını giriniz</label>
+                                            <input type="text" name="MuzayedeAdi" />
+                                            <input type="submit" class="btn-lg btn-danger" value="Oluştur" />
+                                        </form>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <!--/.Content-->
+                        </div>
+                    </div>
+                </div>
+                @for (var i = 0; i < @Model.Count; i++)
+                {
+                    <div class="col-lg-12">
+                        <div class="member d-flex align-items-start">
+                            <div class="pic"><img src="~/MyBiz/img/muzayede.png" class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>@Model[i].MuzayedeAdi</h4>
+                                <p>@Model[i].MTarih.Day/@Model[i].MTarih.Month/@Model[i].MTarih.Year</p>
+
+                                <ul class="" style="padding-left: 300px">
+                                    <li>Yayınla</li>
+                                    @*<li>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class='col-sm-2'>
+                                            <div class="form-group">
+                                                <div class='input-group date' id='datetimepicker1'>
+                                                    <input type='text' class="form-control" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <script type="text/javascript">
+                                            $(function () {
+                                                $('#datetimepicker1').datetimepicker();
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </li>*@
+
+                                    <li>
+                                        <a href="@Url.Action("MuzayedeDetay", "Kullanici", new {muzayedeId = Model[i].MuzayedeID})" type="button1" class="btn btn-primary">Müzayede detay <i class="far fa-gem ml-1 text-white"></i></a>
+                                    </li>
+
+
+                                    <li><a href="@Url.Action("MuzayedeSil", "Kullanici", new {muzayedeId = Model[i].MuzayedeID})"><i class="btn btn-primary">Sil</i></a></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+      
+    </div>
+</section>
+
+
+
+

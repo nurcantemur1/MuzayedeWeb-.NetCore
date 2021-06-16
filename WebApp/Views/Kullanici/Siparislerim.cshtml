@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Siparislerim";
+}
+
+@model List<PeyModel>
+<section>
+    <div class="row">
+        <div class="col-lg-pull-2">
+            <div>
+
+                <ul class="list-group">
+                    <li class="list-group-item "><a href="/Kullanici/KullaniciBilgileri"><h6>Bilgilerim</h6></a></li>
+                    <li class="list-group-item "><a href="/Kullanici/KartBilgilerim"><h6>Kart Bilgileri</h6></a></li>
+                    <li class="list-group-item"><a href="/Kullanici/Muzayedelerim"><h6>Muzayedelerim</h6></a></li>
+                    <li class="list-group-item "><a href="/Kullanici/Urunlerim"><h6>Ürünlerim</h6></a></li>
+                    <li class="list-group-item"><a href="/Kullanici/PeyVerilenler"><h6>Pey verdiklerim</h6></a></li>
+                    <li class="list-group-item active" style="background-color: white"><a href="/Kullanici/Siparislerim"><h6>Siparişlerim</h6></a></li>
+                    <li class="list-group-item "><a href="/Home/LogOut"><h6>Çıkış Yap</h6></a></li>
+
+                </ul>
+
+            </div>
+        </div>
+        <div class="col-lg-10">
+            <div class="container">
+                <table class="table">
+                    <tr>
+                    <tr>
+                        <th>Resim</th>
+                        <th>Muzayede Adı</th>
+                        <th>Urun Adı</th>
+                        <th>Urun Aciklamasi</th>
+                        <th>Urunun ilk Fiyatı</th>
+                        <th>Urunun son fiyatı</th>
+                        <th>Durum</th>
+                    </tr>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <div class="pic" style="width: 100px; height: 100px">
+                                    <a>
+                                        <img src="@item.Base64" class="img-fluid" alt="Red dot">
+                                    </a>
+
+                                </div>
+                            </td>
+                            <td>@item.MuzayedeAdi</td>
+                            <td>@item.UrunAdi</td>
+                            <td> <span>@item.UrunAciklamasi</span> </td>
+                            <td>@item.UrunFiyat</td>
+                            <td>@item.Pey</td>
+
+                            <td><i class="fa fa-circle-o text-primary mr-2"></i> Siparişiniz Alındı</td>
+                        </tr>
+                    }
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</section>
